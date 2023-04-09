@@ -1,11 +1,11 @@
 repositories:
   easy_profiler_catkin:
     type: git
-    url: git@fornat1.jpl.nasa.gov:x/x_external/x_easy_profiler_catkin.git
+    url: git@github.com:florian-world/x_easy_profiler_catkin # @volkbay: fornat1.jpl.nasa.gov cannot be reached
     version: master
   eigen_catkin:
     type: git
-    url: git@fornat1.jpl.nasa.gov:x/x_external/x_eigen_catkin.git
+    url: git@github.com:ethz-asl/eigen_catkin # @volkbay: fornat1.jpl.nasa.gov cannot be reached
     version: master
   ceres_catkin:
     type: git

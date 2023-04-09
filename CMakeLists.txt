@@ -64,11 +64,12 @@ find_package(catkin REQUIRED COMPONENTS
   cmake_modules
   ${OPENCV_PACKAGE}
   ceres_catkin
-  eigen_catkin
+  # eigen_catkin # @volkbay: modified for eigen3v3.4
   glog_catkin
 )
 
-find_package(Eigen3 REQUIRED)
+find_package(Eigen3 3.4 CONFIG REQUIRED) # @volkbay: modified for eigen3v3.4
+set(EIGEN3_INCLUDE_DIR "${Eigen3_DIR}/../../../include/eigen3/") # @volkbay: modified for eigen3v3.4
 #message("Eigen version: ${Eigen3_VERSION}")
 find_package(easy_profiler_catkin REQUIRED)
 
@@ -112,7 +113,7 @@ set(EIGEN3_LIBRARIES ${EIGEN3_LIBRARIES})
 # Configure this package
 catkin_package(
   DEPENDS EIGEN3
-  INCLUDE_DIRS include ${EIGEN3_INCLUDE_DIR} ${ceres_catkin_INCLUDE_DIRS} ${glog_catkin_INCLUDE_DIRS}
+  INCLUDE_DIRS include ${EIGEN3_INCLUDE_DIRS} ${ceres_catkin_INCLUDE_DIRS} ${glog_catkin_INCLUDE_DIRS}
   LIBRARIES x
 )
 
@@ -125,7 +126,7 @@ include_directories (include)
 include_directories (SYSTEM
   ${OpenCV_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIR}
+  # ${EIGEN3_INCLUDE_DIR} # @volkbay: modified for eigen3v3.4
   ${easy_profiler_catkin_INCLUDE_DIRS}
   ${glog_catkin_INCLUDE_DIRS}
 )
@@ -177,4 +178,5 @@ target_link_libraries(x
   ${OpenCV_LIBRARIES}
   ${catkin_LIBRARIES}
   ${easy_profiler_catkin_LIBRARIES}
+  Eigen3::Eigen # @volkbay: modified for eigen3v3.4
 )
